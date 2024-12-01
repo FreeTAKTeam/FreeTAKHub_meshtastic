@@ -1,6 +1,7 @@
 # Meshtastic to FreeTAKServer Integration
 ## Introduction
 This repository facilitates the integration of Meshtastic devices with FreeTAKServer (FTS) using Mosquitto MQTT broker and Node-RED. This setup enables the translation of Meshtastic messages into Cursor-on-Target (CoT) format, allowing seamless communication between Meshtastic LoRa mesh networks and Tactical Awareness Kit (TAK) clients.
+![image](https://github.com/user-attachments/assets/9e8b7b28-501a-4002-9a11-76f18319c5a2)
 
 ## Installation
 ### pre-requirements
