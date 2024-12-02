@@ -66,7 +66,16 @@ This file contains the main settings for the Mosquitto service. Additionally, co
 allow_zero_length_clientid true
 listener 1883 0.0.0.0
 allow_anonymous true
+protocol mqtt
+
+log_type error
+log_type warning
+log_type notice
+log_type information
+log_type subscribe
 ```
+> **Warning**  
+> this is the minimum configuration, for production you need to secure your server.
 
 **Apply Changes**: After saving your changes, restart the Mosquitto service to apply them:
    ```bash
