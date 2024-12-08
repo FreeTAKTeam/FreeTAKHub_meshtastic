@@ -106,9 +106,7 @@ To enable MQTT functionality in the Meshtastic Android application, follow these
    - Tap "Send" to apply the changes.
    - Configure MQTT Settings:
    - **Server Address:** Enter your MQTT broker's address. If left blank, the default public server is used.
- 
    - **JSON Enabled:** Toggle based on your integration needs.
-
    - **Root Topic:** Define ````msh/US```a root topic to organize MQTT messages
    - **Client Proxy Enabled:** If your LORA radio  lacks WIFI  access, enabling this allows it to use your phone's connection.
 
@@ -139,26 +137,24 @@ To enable MQTT functionality in the Meshtastic Android application, follow these
    - Click on the menu in the top-right corner and select `Import`.
    - Copy and paste the contents of the provided JSON file or upload the file directly.
    - Click `Import`.
-
-
     
+**Install Required Node Modules**:
+![image](https://github.com/user-attachments/assets/7274d175-3113-43ed-8548-e8997ec33bbd)
 
-4. **Install Required Node Modules**:
    - Install the required Node-RED nodes used in the flow:
      ```bash
-     npm install node-red-contrib-mqtt node-red-node-serialport node-red-contrib-influxdb
+     npm install node-red-contrib-mqtt node-red-contrib-influxdb node-red-contrib-config
      ```
    - Add any additional nodes listed in the flow that may not already be installed.
 
-5. **Set MQTT Broker Configuration**:
+ **Set MQTT Broker Configuration**:
    - Locate the MQTT nodes (e.g., "Longfast topic JSON", "longfast topic Protobuff").
    - Double-click on each MQTT node and configure the broker settings, including:
      - Broker IP/hostname.
      - Port (default is 1883 for non-SSL connections).
-     - Username and password if required.
 
-6. **Verify Node-RED Flow**:
-   - Ensure the flow is correctly deployed. Click on the `Deploy` button in the top-right corner of the Node-RED editor.
+ **Verify Node-RED Flow**:
+   - Click on the `Deploy` button in the top-right corner of the Node-RED editor.
    - Check the debug nodes to monitor the flow's operations and identify any errors.
   
 
