@@ -12,7 +12,10 @@ this integration is suoted  for scenarios necessitating centralized coordination
 ## Installation
 By following these steps, you can successfully activate and configure Node rd, MQTT and Meshtastic , enabling seamless communication between your mesh network and FreeTAKServer. 
 ### pre-requirements
-we assume that you have already installed FTS using the ZeroTouch installer, so that you have FTS and Node Red already running. Also you have at least one meshtastic node that can connect to Wifi
+We assume that you have already installed FTS using the ZeroTouch installer, so that you have FTS and Node-RED already running. Also you have at least one meshtastic node that can connect to Wifi
+In case you do not have a zero touch installation:
+- Ensure that the last version of Node-RED is installed on your system. You can install it following the [Node-RED documentation](https://nodered.org/docs/getting-started/).
+- Have FreeTAKServer installed and running. Configure its API and TCP/UDP endpoints.
 
 ### Install mosquitto
 To install the Mosquitto MQTT broker on an Ubuntu server without using Docker, follow these steps:
@@ -53,6 +56,7 @@ To install the Mosquitto MQTT broker on an Ubuntu server without using Docker, f
 you will need to:
 * Configure mosquitto
 * configure a Meshtastic Node to pass messages to Moquitto
+* configure Node red
 ### Configure mosquitto
 On Ubuntu , the primary configuration file for the Mosquitto MQTT broker is located at:
 
@@ -129,7 +133,51 @@ To enable MQTT functionality in the Meshtastic Android application, follow these
 
 **Note:** Proper configuration of network settings and channel permissions is crucial for effective MQTT integration. For detailed information, refer to the [Meshtastic MQTT Module Configuration](https://meshtastic.org/docs/configuration/module/mqtt/).
 
+### configure Node red
+ **Import the Flow**:
+   - Open your Node-RED editor (usually accessible via `http://localhost:1880`).
+   - Click on the menu in the top-right corner and select `Import`.
+   - Copy and paste the contents of the provided JSON file or upload the file directly.
+   - Click `Import`.
 
+
+    
+
+4. **Install Required Node Modules**:
+   - Install the required Node-RED nodes used in the flow:
+     ```bash
+     npm install node-red-contrib-mqtt node-red-node-serialport node-red-contrib-influxdb
+     ```
+   - Add any additional nodes listed in the flow that may not already be installed.
+
+5. **Set MQTT Broker Configuration**:
+   - Locate the MQTT nodes (e.g., "Longfast topic JSON", "longfast topic Protobuff").
+   - Double-click on each MQTT node and configure the broker settings, including:
+     - Broker IP/hostname.
+     - Port (default is 1883 for non-SSL connections).
+     - Username and password if required.
+
+6. **Verify Node-RED Flow**:
+   - Ensure the flow is correctly deployed. Click on the `Deploy` button in the top-right corner of the Node-RED editor.
+   - Check the debug nodes to monitor the flow's operations and identify any errors.
+  
+
+ **OPTIONAL / Future usage Configure Global Variables**:
+   - Locate the `FTH Global Config` node in the flow.
+   - Set the following global variables according to your FreeTAKServer setup:
+     - `FTH_FTS_URL`: IP address of your FreeTAKServer instance.
+     - `FTH_FTS_API_Port`: Port number for the FreeTAKServer API.
+     - `FTH_FTS_TCP_Port`: TCP port for streaming.
+     - `FTH_FTS_API_Auth`: Authentication token for the FreeTAKServer API.
+
+**Support and Troubleshooting**:
+- Use the Node-RED debug nodes (active in the flow) to trace issues.
+- Consult the FreeTAKServer and Meshtastic documentation for specific configurations.
+- Verify that all required external services (MQTT broker, FreeTAKServer) are operational and correctly networked.
 
   ## Usage
+   - connect a TAK app to FTS
+   - ensure that you have a GPS position
+   - Send a test message via meshatastic to the topics configured.
+   - in the TAK app you will see the position and the  chat message
   
