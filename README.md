@@ -176,4 +176,25 @@ To enable MQTT functionality in the Meshtastic Android application, follow these
    - ensure that you have a GPS position
    - Send a test message via meshatastic to the topics configured.
    - in the TAK app you will see the position and the  chat message
-  
+
+# Configure meshtastic device
+please follow the official page for updated instructions
+## Configure Wi-Fi:
+![image](https://github.com/user-attachments/assets/d49cfd13-68fe-4cc3-a4a8-e97dbd99722f)
+
+- Go to radio config -> Network > Wi-Fi config.
+- Enter the SSID and Password for your network.
+- Toggle Enable Wi-Fi to ON.
+ -click on Save and Reboot
+
+## configure  MQTT
+   - Go to the "module config" or the web UI.
+   - Select "MQTT" 
+   - Enable MQTT: Toggle the "Enabled" switch to ON.
+   - Server Address: Enter your MQTT broker’s address (e.g., mqtt.example.com or 192.168.1.100).
+   - no Credentials
+   - No  TLS
+   - Root topic: msh/US <-- if you change this you will need to change also the nodereed flow
+
+## OK to LORA
+   - under Radio config - > loRa, enable the togle "OK to MQTT"
